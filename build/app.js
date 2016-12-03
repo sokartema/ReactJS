@@ -20448,30 +20448,97 @@ module.exports = traverseAllChildren;
 module.exports = require('./lib/React');
 
 },{"./lib/React":155}],178:[function(require,module,exports){
+"use strict";
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var React = require('react');
+
+var ContactItem = function (_React$Component) {
+  _inherits(ContactItem, _React$Component);
+
+  function ContactItem(props) {
+    _classCallCheck(this, ContactItem);
+
+    return _possibleConstructorReturn(this, (ContactItem.__proto__ || Object.getPrototypeOf(ContactItem)).call(this, props));
+  }
+
+  _createClass(ContactItem, [{
+    key: "render",
+    value: function render() {
+      return React.createElement(
+        "li",
+        { key: this.key },
+        React.createElement(
+          "h2",
+          null,
+          this.props.name
+        ),
+        React.createElement(
+          "a",
+          { href: "mailto:" + this.props.email },
+          this.props.email
+        ),
+        React.createElement(
+          "div",
+          null,
+          this.props.description
+        )
+      );
+    }
+  }]);
+
+  return ContactItem;
+}(React.Component);
+
+ContactItem.propTypes = {
+
+  name: React.PropTypes.string.isRequired,
+  email: React.PropTypes.string.isRequired,
+  description: React.PropTypes.string
+
+};
+
+module.exports = ContactItem;
+
+},{"react":177}],179:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
 var ReactDOM = require('react-dom');
 
-var contacts = [{ key: 1, name: "Jazer Abreu", email: "sokartema@gmail.com" }, { key: 2, name: "Christie" }];
+//classes
+var ContactItem = require('./contact-item');
+
+var contacts = [{
+  key: 1,
+  name: "Jazer Abreu",
+  email: "sokartema@gmail.com",
+  description: "Developer"
+
+}, {
+  key: 2,
+  name: "Bob",
+  email: "bob@example.com"
+
+}, {
+
+  key: 3,
+  name: "Christie",
+  email: "christie@example.com"
+
+}];
 
 var listElements = contacts.filter(function (contact) {
   return contact.email;
 }).map(function (contact) {
-  return React.createElement(
-    'li',
-    { key: contact.key },
-    React.createElement(
-      'h2',
-      null,
-      contact.name
-    ),
-    React.createElement(
-      'a',
-      { href: "mailto:" + contact.email },
-      contact.email
-    )
-  );
+  return React.createElement(ContactItem, { key: contact.key, name: contact.name, email: contact.email, description: contact.description });
 });
 
 var rootElement = React.createElement(
@@ -20489,6 +20556,8 @@ var rootElement = React.createElement(
   )
 );
 
+console.log(React.isValidElement(rootElement));
+
 ReactDOM.render(rootElement, document.getElementById('react-app'));
 
-},{"react":177,"react-dom":26}]},{},[178]);
+},{"./contact-item":178,"react":177,"react-dom":26}]},{},[179]);
