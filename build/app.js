@@ -20453,6 +20453,27 @@ module.exports = require('./lib/React');
 var React = require('react');
 var ReactDOM = require('react-dom');
 
+var contacts = [{ key: 1, name: "Jazer Abreu", email: "sokartema@gmail.com" }, { key: 2, name: "Christie" }];
+
+var listElements = contacts.filter(function (contact) {
+  return contact.email;
+}).map(function (contact) {
+  return React.createElement(
+    'li',
+    { key: contact.key },
+    React.createElement(
+      'h2',
+      null,
+      contact.name
+    ),
+    React.createElement(
+      'a',
+      { href: "mailto:" + contact.email },
+      contact.email
+    )
+  );
+});
+
 var rootElement = React.createElement(
   'div',
   null,
@@ -20464,34 +20485,7 @@ var rootElement = React.createElement(
   React.createElement(
     'ul',
     null,
-    React.createElement(
-      'li',
-      null,
-      React.createElement(
-        'h2',
-        null,
-        'Jazer Abreu'
-      ),
-      React.createElement(
-        'a',
-        { href: 'mailto: sokartema@gmail.com' },
-        'sokartema@gmail.com'
-      )
-    ),
-    React.createElement(
-      'li',
-      null,
-      React.createElement(
-        'h2',
-        null,
-        'Pedro jimenez'
-      ),
-      React.createElement(
-        'a',
-        { href: 'mailto: pedrojimenez@gmail.com' },
-        'pedrojimenez@gmail.com'
-      )
-    )
+    listElements
   )
 );
 
