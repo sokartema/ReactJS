@@ -14,8 +14,8 @@
     "build6": "browserify -t [ babelify --presets [ react es2015 ] ] src/example6/index.js -o build/app.js && uglifyjs build/app.js --output build/app-min.js",
     "build7": "browserify -t [ babelify --presets [ react es2015 ] ] src/example7/index.js -o build/app.js && uglifyjs build/app.js --output build/app-min.js",
     "build8": "browserify -t [ babelify --presets [ react es2015 ] ] src/example8/index.js -o build/app.js && uglifyjs build/app.js --output build/app-min.js",
-    "build9": "browserify -t [ babelify --presets [ react es2015 ] ] src/example9/index.js -o build/app.js && uglifyjs build/app.js --output build/app-min.js"
-
+    "build9": "browserify -t [ babelify --presets [ react es2015 ] ] src/example9/index.js -o build/app.js && uglifyjs build/app.js --output build/app-min.js",
+    "build10": "browserify -t [ babelify --presets [ react es2015 ] ] src/example10/index.js -o build/app.js && uglifyjs build/app.js --output build/app-min.js"
   },
   "author": "Jazer Abreu",
   "dependencies": {
@@ -23,11 +23,12 @@
     "babel-preset-react": "^6.16.0",
     "babelify": "^7.3.0",
     "react": "^15.4.0",
+    "react-addons-css-transition-group": "^15.4.1",
     "react-dom": "^15.4.0"
   },
   "repository": {
-   "type": "git",
-   "url": "git+https://github.com/sokartema/ReactJS"
+    "type": "git",
+    "url": "git+https://github.com/sokartema/ReactJS"
   },
   "license": "ISC"
 }

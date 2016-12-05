@@ -1,4 +1,5 @@
 const React = require('react');
+const ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 
 //classes
 const ContactItem = require('./contact-item');
@@ -10,6 +11,7 @@ class ContactView extends React.Component{
   constructor(props){
     super(props)
     this.state = {contacts: props.contacts, newContact: props.newContact};
+
     this.onNewContact = this.onNewContact.bind(this);
   }
 
@@ -32,7 +34,13 @@ class ContactView extends React.Component{
     }).map((contact) =>{
 
       return (
-        <ContactItem key={contact.key} name={contact.name} email={contact.email} description={contact.description}/>
+        <ReactCSSTransitionGroup
+          transitionName="example"
+          transitionEnterTimeout={500}
+          transitionAppear={true}
+          transitionAppearTimeout={500}>
+          <ContactItem key={contact.key} name={contact.name} email={contact.email} description={contact.description}/>
+        </ReactCSSTransitionGroup>
       )
 
     });
