@@ -20615,9 +20615,7 @@ var ContactView = function (_React$Component) {
           { className: 'ContactView-list' },
           contactItemElements
         ),
-        React.createElement(ContactForm, { value: this.props.newContact, onChange: function onChange(contact) {
-            console.log(contact);
-          } })
+        React.createElement(ContactForm, { value: this.props.newContact, onChange: this.props.onNewContactChange })
       );
     }
   }]);
@@ -20627,7 +20625,8 @@ var ContactView = function (_React$Component) {
 
 ContactView.propTypes = {
   contacts: React.PropTypes.array.isRequired,
-  newContact: React.PropTypes.object.isRequired
+  newContact: React.PropTypes.object.isRequired,
+  onNewContactChange: React.PropTypes.func.isRequired
 };
 
 module.exports = ContactView;
@@ -20642,27 +20641,35 @@ var ReactDOM = require('react-dom');
 
 var ContactView = require('./contact-view');
 
-var contacts = [{
-  key: 1,
-  name: "Jazer Abreu",
-  email: "sokartema@gmail.com",
-  description: "Developer"
-}, {
-  key: 2,
-  name: "Pedro",
-  email: "pedro@gmail.com"
-}, {
-  key: 3,
-  name: "Christie"
+function updateNewContact(contact) {
+    setState({ newContact: contact });
+}
 
-}];
+var state = {};
 
-var newContact = {
-  name: "",
-  email: "",
-  description: ""
-};
+function setState(changes) {
+    Object.assign(state, changes);
 
-ReactDOM.render(React.createElement(ContactView, { contacts: contacts, newContact: newContact }), document.getElementById('react-app'));
+    ReactDOM.render(React.createElement(ContactView, { contacts: state.contacts, newContact: state.newContact, onNewContactChange: updateNewContact }), document.getElementById('react-app'));
+}
+
+// Set initial data
+setState({
+    contacts: [{
+        key: 1,
+        name: "James K Nelson",
+        email: "james@jamesknelson.com",
+        description: "Front-end Unicorn"
+    }, {
+        key: 2,
+        name: "Jim",
+        email: "jim@example.com"
+    }],
+    newContact: {
+        name: "",
+        email: "",
+        description: ""
+    }
+});
 
 },{"./contact-view":180,"react":177,"react-dom":26}]},{},[181]);
