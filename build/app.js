@@ -20612,8 +20612,6 @@ var ContactView = function (_React$Component) {
 
     _this.state = { contacts: props.contacts, newContact: props.newContact };
 
-    console.log(_this.state);
-
     _this.onNewContact = _this.onNewContact.bind(_this);
     return _this;
   }
@@ -20622,10 +20620,7 @@ var ContactView = function (_React$Component) {
     key: 'onNewContact',
     value: function onNewContact(state) {
 
-      console.log(state);
-
       this.setState(function (prevState) {
-        console.log(prevState);
         var key = prevState.contacts[prevState.contacts.length - 1].key + 1;
         Object.assign(state, { key: key });
         var obj = Object.assign({}, prevState);
