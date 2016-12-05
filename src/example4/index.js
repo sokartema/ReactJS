@@ -34,7 +34,7 @@ const contactItemElements = contacts.filter((contact) => {
 }).map((contact) =>{
 
   return (
-    <ContactItem name={contact.name} email={contact.email} description={contact.description}/>
+    <ContactItem key={contact.key} name={contact.name} email={contact.email} description={contact.description}/>
   )
 
 });

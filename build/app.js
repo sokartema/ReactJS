@@ -20472,13 +20472,21 @@ var ContactForm = function (_React$Component) {
   _createClass(ContactForm, [{
     key: "render",
     value: function render() {
+      var oldContact = this.props.value;
+      var _onChange = this.props.onChange;
 
       return React.createElement(
         "form",
         { className: "ContactForm" },
-        React.createElement("input", { type: "text", placeholder: "Name (required)", value: this.props.contact.name }),
-        React.createElement("input", { type: "email", placeholder: "Email", value: this.props.contact.email }),
-        React.createElement("textarea", { placeholder: "Description", value: this.props.contact.description }),
+        React.createElement("input", { type: "text", placeholder: "Name (required)", value: this.props.value.name, onChange: function onChange(e) {
+            _onChange(Object.assign({}, oldContact, { name: e.target.value }));
+          } }),
+        React.createElement("input", { type: "email", placeholder: "Email", value: this.props.value.email, onChange: function onChange(e) {
+            _onChange(Object.assign({}, oldContact, { email: e.target.value }));
+          } }),
+        React.createElement("textarea", { placeholder: "Description", value: this.props.value.description, onChange: function onChange(e) {
+            _onChange(Object.assign({}, oldContact, { description: e.target.value }));
+          } }),
         React.createElement(
           "button",
           { type: "submit" },
@@ -20493,7 +20501,8 @@ var ContactForm = function (_React$Component) {
 
 ContactForm.PropTypes = {
 
-  contact: React.PropTypes.object.isRequired
+  value: React.PropTypes.object.isRequired,
+  onChange: React.PropTypes.func.isRequired
 };
 
 module.exports = ContactForm;
@@ -20591,7 +20600,7 @@ var ContactView = function (_React$Component) {
         return contact.email;
       }).map(function (contact) {
 
-        return React.createElement(ContactItem, { name: contact.name, email: contact.email, description: contact.description });
+        return React.createElement(ContactItem, { key: contact.key, name: contact.name, email: contact.email, description: contact.description });
       });
       return React.createElement(
         'div',
@@ -20606,7 +20615,9 @@ var ContactView = function (_React$Component) {
           { className: 'ContactView-list' },
           contactItemElements
         ),
-        React.createElement(ContactForm, { contact: this.props.newContact })
+        React.createElement(ContactForm, { value: this.props.newContact, onChange: function onChange(contact) {
+            console.log(contact);
+          } })
       );
     }
   }]);

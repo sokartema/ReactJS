@@ -27,7 +27,7 @@ class ContactView extends React.Component{
       <div className="ContactView">
         <h1 className="ContactView-title">Contacts</h1>
         <ul className="ContactView-list">{contactItemElements}</ul>
-        <ContactForm contact={this.props.newContact} />
+        <ContactForm value={this.props.newContact} onChange={function(contact){console.log(contact);}} />
       </div>
 
     )

@@ -10,7 +10,8 @@
     "build3": "browserify -t [ babelify --presets [ react es2015 ] ] src/example3/index.js -o build/app.js && uglifyjs build/app.js --output build/app-min.js",
     "build3-modular": "browserify -t [ babelify --presets [ react es2015 ] ] src/example3-modular/index.js -o build/app.js && uglifyjs build/app.js --output build/app-min.js",
     "build4": "browserify -t [ babelify --presets [ react es2015 ] ] src/example4/index.js -o build/app.js && uglifyjs build/app.js --output build/app-min.js",
-    "build5": "browserify -t [ babelify --presets [ react es2015 ] ] src/example5/index.js -o build/app.js && uglifyjs build/app.js --output build/app-min.js"
+    "build5": "browserify -t [ babelify --presets [ react es2015 ] ] src/example5/index.js -o build/app.js && uglifyjs build/app.js --output build/app-min.js",
+    "build6": "browserify -t [ babelify --presets [ react es2015 ] ] src/example6/index.js -o build/app.js && uglifyjs build/app.js --output build/app-min.js"
   },
   "author": "Jazer Abreu",
   "dependencies": {
