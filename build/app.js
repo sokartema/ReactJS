@@ -20460,6 +20460,57 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var React = require('react');
 
+var ContactForm = function (_React$Component) {
+  _inherits(ContactForm, _React$Component);
+
+  function ContactForm(props) {
+    _classCallCheck(this, ContactForm);
+
+    return _possibleConstructorReturn(this, (ContactForm.__proto__ || Object.getPrototypeOf(ContactForm)).call(this, props));
+  }
+
+  _createClass(ContactForm, [{
+    key: "render",
+    value: function render() {
+
+      return React.createElement(
+        "form",
+        null,
+        React.createElement("input", { type: "text", placeholder: "Name (required)", value: this.props.contact.name }),
+        React.createElement("input", { type: "email", placeholder: "Email", value: this.props.contact.email }),
+        React.createElement("textarea", { placeholder: "Description", value: this.props.contact.description }),
+        React.createElement(
+          "button",
+          { type: "submit" },
+          "Add Contact"
+        )
+      );
+    }
+  }]);
+
+  return ContactForm;
+}(React.Component);
+
+ContactForm.PropTypes = {
+
+  contact: React.PropTypes.object.isRequired
+};
+
+module.exports = ContactForm;
+
+},{"react":177}],179:[function(require,module,exports){
+"use strict";
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var React = require('react');
+
 var ContactItem = function (_React$Component) {
   _inherits(ContactItem, _React$Component);
 
@@ -20497,17 +20548,16 @@ var ContactItem = function (_React$Component) {
   return ContactItem;
 }(React.Component);
 
-ContactItem.propTypes = {
+ContactItem.PropTypes = {
 
   name: React.PropTypes.string.isRequired,
   email: React.PropTypes.string.isRequired,
   description: React.PropTypes.string
-
 };
 
 module.exports = ContactItem;
 
-},{"react":177}],179:[function(require,module,exports){
+},{"react":177}],180:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -20515,30 +20565,34 @@ var ReactDOM = require('react-dom');
 
 //classes
 var ContactItem = require('./contact-item');
+var ContactForm = require('./contact-form');
 
 var contacts = [{
   key: 1,
   name: "Jazer Abreu",
   email: "sokartema@gmail.com",
   description: "Developer"
-
 }, {
   key: 2,
-  name: "Bob",
-  email: "bob@example.com"
-
+  name: "Pedro",
+  email: "pedro@gmail.com"
 }, {
-
   key: 3,
-  name: "Christie",
-  email: "christie@example.com"
+  name: "Christie"
 
 }];
 
-var listElements = contacts.filter(function (contact) {
+var newContact = {
+  name: "",
+  email: "",
+  description: ""
+};
+
+var contactItemElements = contacts.filter(function (contact) {
   return contact.email;
 }).map(function (contact) {
-  return React.createElement(ContactItem, { key: contact.key, name: contact.name, email: contact.email, description: contact.description });
+
+  return React.createElement(ContactItem, { name: contact.name, email: contact.email, description: contact.description });
 });
 
 var rootElement = React.createElement(
@@ -20552,12 +20606,11 @@ var rootElement = React.createElement(
   React.createElement(
     'ul',
     null,
-    listElements
-  )
+    contactItemElements
+  ),
+  React.createElement(ContactForm, { contact: newContact })
 );
-
-console.log(React.isValidElement(rootElement));
 
 ReactDOM.render(rootElement, document.getElementById('react-app'));
 
-},{"./contact-item":178,"react":177,"react-dom":26}]},{},[179]);
+},{"./contact-form":178,"./contact-item":179,"react":177,"react-dom":26}]},{},[180]);
