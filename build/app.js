@@ -20466,26 +20466,37 @@ var ContactForm = function (_React$Component) {
   function ContactForm(props) {
     _classCallCheck(this, ContactForm);
 
-    return _possibleConstructorReturn(this, (ContactForm.__proto__ || Object.getPrototypeOf(ContactForm)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (ContactForm.__proto__ || Object.getPrototypeOf(ContactForm)).call(this, props));
+
+    _this.state = _this.props.value;
+    _this.onChangeInput = _this.onChangeInput.bind(_this);
+    return _this;
   }
 
   _createClass(ContactForm, [{
+    key: "onChangeInput",
+    value: function onChangeInput(e, which) {
+
+      var obj = {};
+      obj[which] = e.target.value;
+      this.setState(obj);
+    }
+  }, {
     key: "render",
     value: function render() {
-      var oldContact = this.props.value;
-      var _onChange = this.props.onChange;
+      var _this2 = this;
 
       return React.createElement(
         "form",
         { className: "ContactForm" },
-        React.createElement("input", { type: "text", placeholder: "Name (required)", value: this.props.value.name, onChange: function onChange(e) {
-            _onChange(Object.assign({}, oldContact, { name: e.target.value }));
+        React.createElement("input", { type: "text", placeholder: "Name (required)", value: this.state.name, onChange: function onChange(e) {
+            _this2.onChangeInput(e, 'name');
           } }),
-        React.createElement("input", { type: "email", placeholder: "Email", value: this.props.value.email, onChange: function onChange(e) {
-            _onChange(Object.assign({}, oldContact, { email: e.target.value }));
+        React.createElement("input", { type: "email", placeholder: "Email", value: this.state.email, onChange: function onChange(e) {
+            _this2.onChangeInput(e, 'email');
           } }),
-        React.createElement("textarea", { placeholder: "Description", value: this.props.value.description, onChange: function onChange(e) {
-            _onChange(Object.assign({}, oldContact, { description: e.target.value }));
+        React.createElement("textarea", { placeholder: "Description", value: this.state.description, onChange: function onChange(e) {
+            _this2.onChangeInput(e, 'description');
           } }),
         React.createElement(
           "button",
@@ -20501,8 +20512,7 @@ var ContactForm = function (_React$Component) {
 
 ContactForm.PropTypes = {
 
-  value: React.PropTypes.object.isRequired,
-  onChange: React.PropTypes.func.isRequired
+  value: React.PropTypes.object.isRequired
 };
 
 module.exports = ContactForm;
@@ -20615,7 +20625,7 @@ var ContactView = function (_React$Component) {
           { className: 'ContactView-list' },
           contactItemElements
         ),
-        React.createElement(ContactForm, { value: this.props.newContact, onChange: this.props.onNewContactChange })
+        React.createElement(ContactForm, { value: this.props.newContact })
       );
     }
   }]);
@@ -20625,8 +20635,7 @@ var ContactView = function (_React$Component) {
 
 ContactView.propTypes = {
   contacts: React.PropTypes.array.isRequired,
-  newContact: React.PropTypes.object.isRequired,
-  onNewContactChange: React.PropTypes.func.isRequired
+  newContact: React.PropTypes.object.isRequired
 };
 
 module.exports = ContactView;
@@ -20641,35 +20650,29 @@ var ReactDOM = require('react-dom');
 
 var ContactView = require('./contact-view');
 
-function updateNewContact(contact) {
-    setState({ newContact: contact });
-}
-
-var state = {};
-
-function setState(changes) {
-    Object.assign(state, changes);
-
-    ReactDOM.render(React.createElement(ContactView, { contacts: state.contacts, newContact: state.newContact, onNewContactChange: updateNewContact }), document.getElementById('react-app'));
-}
-
 // Set initial data
-setState({
-    contacts: [{
-        key: 1,
-        name: "James K Nelson",
-        email: "james@jamesknelson.com",
-        description: "Front-end Unicorn"
-    }, {
-        key: 2,
-        name: "Jim",
-        email: "jim@example.com"
-    }],
-    newContact: {
-        name: "",
-        email: "",
-        description: ""
-    }
-});
+var state = {
+  contacts: [{
+    key: 1,
+    name: "Jazer Abreu",
+    email: "sokartema@gmail.com",
+    description: "Developer"
+  }, {
+    key: 2,
+    name: "Pedro",
+    email: "pedro@gmail.com"
+  }, {
+    key: 3,
+    name: "Christie"
+
+  }],
+  newContact: {
+    name: "",
+    email: "",
+    description: ""
+  }
+};
+
+ReactDOM.render(React.createElement(ContactView, { contacts: state.contacts, newContact: state.newContact }), document.getElementById('react-app'));
 
 },{"./contact-view":180,"react":177,"react-dom":26}]},{},[181]);
