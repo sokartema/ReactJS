@@ -20499,10 +20499,10 @@ var ContactForm = function (_React$Component) {
         { className: "ContactForm", onSubmit: this.onSubmit },
         React.createElement("input", { type: "text", placeholder: "Name (required)", value: this.state.name, onChange: function onChange(e) {
             _this2.onChangeInput(e, 'name');
-          } }),
+          }, required: true }),
         React.createElement("input", { type: "email", placeholder: "Email", value: this.state.email, onChange: function onChange(e) {
             _this2.onChangeInput(e, 'email');
-          } }),
+          }, required: true }),
         React.createElement("textarea", { placeholder: "Description", value: this.state.description, onChange: function onChange(e) {
             _this2.onChangeInput(e, 'description');
           } }),

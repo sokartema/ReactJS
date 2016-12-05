@@ -27,8 +27,8 @@ class ContactForm extends React.Component{
 
     return (
       <form className="ContactForm" onSubmit={this.onSubmit}>
-        <input type="text" placeholder="Name (required)" value={this.state.name} onChange={e => {this.onChangeInput(e, 'name')}} />
-        <input type="email" placeholder="Email" value={this.state.email} onChange={e => {this.onChangeInput(e, 'email')}} />
+        <input type="text" placeholder="Name (required)" value={this.state.name} onChange={e => {this.onChangeInput(e, 'name')}} required/>
+        <input type="email" placeholder="Email" value={this.state.email} onChange={e => {this.onChangeInput(e, 'email')}} required/>
         <textarea placeholder="Description" value={this.state.description} onChange={e => {this.onChangeInput(e, 'description')}} />
         <button type="submit">Add Contact</button>
       </form>
