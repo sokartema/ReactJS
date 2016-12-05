@@ -13,7 +13,8 @@
     "build5": "browserify -t [ babelify --presets [ react es2015 ] ] src/example5/index.js -o build/app.js && uglifyjs build/app.js --output build/app-min.js",
     "build6": "browserify -t [ babelify --presets [ react es2015 ] ] src/example6/index.js -o build/app.js && uglifyjs build/app.js --output build/app-min.js",
     "build7": "browserify -t [ babelify --presets [ react es2015 ] ] src/example7/index.js -o build/app.js && uglifyjs build/app.js --output build/app-min.js",
-    "build8": "browserify -t [ babelify --presets [ react es2015 ] ] src/example8/index.js -o build/app.js && uglifyjs build/app.js --output build/app-min.js"
+    "build8": "browserify -t [ babelify --presets [ react es2015 ] ] src/example8/index.js -o build/app.js && uglifyjs build/app.js --output build/app-min.js",
+    "build9": "browserify -t [ babelify --presets [ react es2015 ] ] src/example9/index.js -o build/app.js && uglifyjs build/app.js --output build/app-min.js"
 
   },
   "author": "Jazer Abreu",
