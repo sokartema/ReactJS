@@ -4,7 +4,7 @@ class ContactForm extends React.Component{
 
   constructor(props){
     super(props);
-    this.state = this.props.value;
+    this.state = props.value;
     this.onChangeInput = this.onChangeInput.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }

@@ -20468,7 +20468,7 @@ var ContactForm = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (ContactForm.__proto__ || Object.getPrototypeOf(ContactForm)).call(this, props));
 
-    _this.state = _this.props.value;
+    _this.state = props.value;
     _this.onChangeInput = _this.onChangeInput.bind(_this);
     _this.onSubmit = _this.onSubmit.bind(_this);
     return _this;
